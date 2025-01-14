@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BudgetBuddy: Expense Tracker</title>
+  <link rel="stylesheet" href="index.css">
+  <link href="Image/favicon-32x32.png" rel="icon" type="icon/png" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">BudgetBuddy</div>
+    <ul class="nav-links">
+      <li><a href="#summary">Summary</a></li>
+      <li><a href="#add-expense">Add Expense</a></li>
+      <li><a href="#transaction-history">Transaction History</a></li>
+      <li><a href="#expensePieChart">Expense Chart</a></li>
+      <li><a href="#intersection">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <img src="Image/logo-png.png" alt="Logo" width="100" style="border-radius: 60px;">
+    <h1>BudgetBuddy: Expense Tracker</h1>
+    <p id="current-date-time"></p> <!-- Date and time will be displayed here -->
+  </header>
+  <br>
+  <div id="summary">
+    <h2>Summary</h2>
+    <p>Total Income: <span id="total-income-display">₹0.00</span></p>
+    <p>Total Expenses: <span id="total-expenses-display">₹0.00</span></p>
+    <p>Remaining Balance: <span id="remaining-balance-display">₹0.00</span></p>
+  </div>
+
+  <main>
+    <section>
+      <h2>Set Total Income</h2>
+      <input type="number" id="total-income-input" placeholder="Enter total income">
+      <button id="set-income">Set Income</button>
+    </section>
+
+    <section>
+      <h2 id="add-expense">Add Expense</h2>
+      <input type="text" id="solo-expense-title" placeholder="Expense Title">
+      <input type="number" id="solo-expense-amount" placeholder="Expense Amount">
+      <select id="solo-expense-category">
+        <option value="">Select Category</option>
+        <option value="Food">Food</option>
+        <option value="Travel">Travel</option>
+        <option value="Rent">Rent</option>
+        <option value="Others">Others</option>
+      </select>
+      <button id="add-solo-expense">Add Expense</button>
+    </section>
+
+    <section>
+      <h2 id="transaction-history">Transaction History</h2>
+      <select id="history-filter">
+        <option value="">All Categories</option>
+        <option value="Food">Food</option>
+        <option value="Travel">Travel</option>
+        <option value="Rent">Rent</option>
+        <option value="Others">Others</option>
+      </select>
+      <ul id="transaction-history-list"></ul>
+    </section>
+
+    <section>
+      <h2 id="expensePieChart">Expense Chart</h2>
+      <canvas id="expensePieChartCanvas"></canvas>
+    </section>
+
+    <section id="button-container">
+      <button id="download-pdf">Download PDF</button>
+      <button id="reset-all">Reset</button>
+    </section>
+  </main>
+  <footer>
+    <div id="intersection">
+      <h2>Connect with Us</h2>
+      <ul id="social-links">
+        <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
+        <li><a href="https://www.twitter.com" target="_blank">Twitter</a></li>
+        <li><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
+        <li><a href="https://www.linkedin.com" target="_blank">LinkedIn</a></li>
+      </ul>
+      <h2>FAQs</h2>
+      <ul id="faqs">
+        <li><strong>Q:</strong> How do I reset all data?<br><strong>A:</strong> Click on the "Reset" button to clear all entries.</li>
+        <li><strong>Q:</strong> Can I export my expense data?<br><strong>A:</strong> Yes, use the "Download PDF" button to save your data.</li>
+        <li><strong>Q:</strong> How can I categorize my expenses?<br><strong>A:</strong> Use the category dropdown when adding an expense.</li>
+      </ul>
+      <p id="credits">Developed by Kritagya, Tanmay, Shubhanshu, and Tushar.</p>
+    </div>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+</html>

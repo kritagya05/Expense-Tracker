@@ -1,0 +1,263 @@
+/* General Styling */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #81c784, #01d8f4, #333333);
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+header {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: white;
+  padding: 20px;
+  margin-top: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
+}
+
+header p#current-date-time {
+  font-size: 0.9rem;
+  margin-top: 5px;
+  color: #e0f7fa;
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  background: linear-gradient(to bottom, #f0fdf4, #e0f7fa);
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 15px;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
+}
+
+section h2 {
+  margin-top: 0;
+}
+
+input,
+select {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#transaction-history {
+  list-style-type: none;
+  padding: 0;
+}
+
+#transaction-history li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+#filter-category {
+  margin-bottom: 10px;
+}
+
+#button-container button {
+  margin: 5px;
+  padding: 10px 20px;
+}
+
+/* Pie Chart Styling */
+canvas {
+  display: block;
+  margin: 20px auto;
+}
+
+#summary {
+  background: linear-gradient(to right, #333333, #555555, #777777);
+  color: white;
+  margin-left: 2%;
+  margin-right: 2%;
+  text-align: center;
+  border-radius: 15px;
+  padding: 5px;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
+}
+
+/* Filter Category Styling */
+#filter-category {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+/* Footer Styling */
+#intersection {
+  background: linear-gradient(135deg, #212121, #424242); /* Stylish dark to light gradient */
+  color: white;
+  padding: 50px 20px;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  border-top: 4px solid #81c784; /* Green line for separation */
+}
+
+.footer-section {
+  margin-bottom: 30px;
+}
+
+.footer-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #81c784; /* Light green for section titles */
+}
+
+#social-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+#social-links li {
+  display: inline-block;
+}
+
+#social-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 10px 15px;
+  border-radius: 30px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#social-links a:hover {
+  transform: translateY(-5px); /* Subtle upward movement on hover */
+  color: #81c784; /* Light green hover effect */
+}
+
+#faqs {
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#faqs li {
+  margin-bottom: 15px;
+}
+
+#faqs strong {
+  color: #81c784; /* Light green for question emphasis */
+}
+
+#credits {
+  font-size: 1rem;
+  color: #cccccc; /* Soft grey for credits */
+  margin-top: 30px;
+  font-style: italic;
+}
+
+footer .fab {
+  margin-right: 8px; /* Spacing between icon and text */
+  font-size: 1.5rem;
+}
+
+footer .footer-section {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000; /* Black background for navbar */
+  padding: 10px 20px;
+  color: white;
+  border-radius: 15px;
+  margin: 0 2%; /* Matches the header margin */
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
+  margin-top: 10px; /* Space between navbar and the top */
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+}
+
+.navbar .nav-links li {
+  display: inline;
+}
+
+.navbar .nav-links a {
+  color: white; /* White text for links */
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 5px 10px;
+  border-radius: 10px;
+  transition: background-color 0.3s, transform 0.2s ease;
+}
+
+.navbar .nav-links a:hover {
+  background-color: #333; /* Slightly lighter black for hover effect */
+  transform: translateY(-2px); /* Subtle lift effect */
+}
+
+/* Responsive Navbar for smaller screens */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .navbar .nav-links a {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #social-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
