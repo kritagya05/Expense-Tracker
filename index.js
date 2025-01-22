@@ -1,10 +1,8 @@
-// Initialize variables
 let totalIncome = 0;
 let totalExpenses = 0;
-let transactions = []; // Array to store transactions
+let transactions = []; 
 let categories = ["Food", "Travel", "Rent", "Others"];
 
-// Update the summary section
 function updateSummary() {
   const remainingBalance = totalIncome - totalExpenses;
   document.getElementById("total-income-display").textContent = `₹${totalIncome.toFixed(2)}`;
@@ -12,7 +10,6 @@ function updateSummary() {
   document.getElementById("remaining-balance-display").textContent = `₹${remainingBalance.toFixed(2)}`;
 }
 
-// Add expense function with date and time
 function addExpense() {
   const expenseTitle = document.getElementById("solo-expense-title").value;
   const expenseAmount = parseFloat(document.getElementById("solo-expense-amount").value);
@@ -23,33 +20,29 @@ function addExpense() {
     return;
   }
 
-  const dateTime = new Date().toLocaleString(); // Current date and time
+  const dateTime = new Date().toLocaleString();
 
-  // Update total expenses and add the new expense to the transactions array
   totalExpenses += expenseAmount;
   transactions.push({
     title: expenseTitle,
     amount: expenseAmount,
     category: expenseCategory,
-    dateTime: dateTime, // Add the date and time of the transaction
+    dateTime: dateTime, 
   });
 
-  // Clear the input fields
   document.getElementById("solo-expense-title").value = "";
   document.getElementById("solo-expense-amount").value = "";
   document.getElementById("solo-expense-category").value = "";
 
-  // Update the summary and transaction history
   updateSummary();
   displayTransactionHistory();
   updateExpenseChart();
 }
 
-// Display transaction history with date and time
 function displayTransactionHistory() {
   const filterCategory = document.getElementById("history-filter").value;
   const historyList = document.getElementById("transaction-history-list");
-  historyList.innerHTML = ""; // Clear previous list
+  historyList.innerHTML = ""; 
 
   if (transactions.length === 0) {
     const noTransactionsMessage = document.createElement("li");
@@ -67,7 +60,6 @@ function displayTransactionHistory() {
   });
 }
 
-// Update the pie chart for expenses
 function updateExpenseChart() {
   const categoriesTotal = {
     Food: 0,
@@ -80,19 +72,16 @@ function updateExpenseChart() {
     categoriesTotal[transaction.category] += transaction.amount;
   });
 
-  // If there's no expense data, don't attempt to draw the chart
   if (totalExpenses === 0) {
     return;
   }
 
   const ctx = document.getElementById("expensePieChartCanvas").getContext("2d");
 
-  // Destroy previous chart before creating a new one (if applicable)
   if (window.expenseChart) {
     window.expenseChart.destroy();
   }
 
-  // Create a new chart with the updated data
   window.expenseChart = new Chart(ctx, {
     type: "pie",
     data: {
@@ -125,7 +114,6 @@ function updateExpenseChart() {
   });
 }
 
-// Download PDF function including Pie Chart
 function downloadPDF() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
@@ -135,21 +123,18 @@ function downloadPDF() {
   doc.text(`Total Expenses: ₹${totalExpenses.toFixed(2)}`, 20, 40);
   doc.text(`Remaining Balance: ₹${(totalIncome - totalExpenses).toFixed(2)}`, 20, 50);
 
-  // Add transaction history to PDF
   doc.text("Transaction History:", 20, 60);
   transactions.forEach((transaction, index) => {
     doc.text(`${transaction.title} - ₹${transaction.amount.toFixed(2)} (${transaction.category}) - ${transaction.dateTime}`, 20, 70 + (index * 10));
   });
 
-  // Generate Pie Chart image
   const canvas = document.getElementById("expensePieChartCanvas");
   const imgData = canvas.toDataURL("image/png");
-  doc.addImage(imgData, "PNG", 20, 100, 180, 160); // Position and size of the chart image
+  doc.addImage(imgData, "PNG", 20, 100, 180, 160);
 
   doc.save("expense-report.pdf");
 }
 
-// Reset all data
 function resetAll() {
   totalIncome = 0;
   totalExpenses = 0;
@@ -163,7 +148,6 @@ function resetAll() {
   updateExpenseChart();
 }
 
-// Set total income function
 function setTotalIncome() {
   const income = parseFloat(document.getElementById("total-income-input").value);
   if (!isNaN(income) && income > 0) {
@@ -175,7 +159,6 @@ function setTotalIncome() {
   }
 }
 
-// Display current date and time
 function displayDateTime() {
   const dateTimeElement = document.getElementById("current-date-time");
   const now = new Date();
@@ -183,18 +166,15 @@ function displayDateTime() {
   dateTimeElement.textContent = now.toLocaleString('en-US', options);
 }
 
-// Event Listeners
 document.getElementById("set-income").addEventListener("click", setTotalIncome);
 document.getElementById("add-solo-expense").addEventListener("click", addExpense);
 document.getElementById("history-filter").addEventListener("change", displayTransactionHistory);
 document.getElementById("download-pdf").addEventListener("click", downloadPDF);
 document.getElementById("reset-all").addEventListener("click", resetAll);
 
-// Initialize
 updateSummary();
 displayTransactionHistory();
 updateExpenseChart();
 displayDateTime();
 
-// Update the time every second
 setInterval(displayDateTime, 1000);
